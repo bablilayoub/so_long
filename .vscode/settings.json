@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "mlx.h": "c",
+        "so_long.h": "c",
+        "ft_printf.h": "c"
+    }
+}
