@@ -6,18 +6,18 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:47:25 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/29 14:36:25 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/23 17:12:32 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+size_t	ft_strlcpy_custom(char *dest, char *src, size_t size)
 {
 	size_t	i;
 	size_t	src_len;
 
-	src_len = ft_strlen(src);
+	src_len = ft_strlen_custom(src);
 	if (size > 0)
 	{
 		i = 0;
@@ -31,7 +31,7 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 	return (src_len);
 }
 
-char	*ft_strchr(char *str, char c)
+char	*ft_strchr_custom(char *str, char c)
 {
 	int	i;
 
@@ -47,7 +47,7 @@ char	*ft_strchr(char *str, char c)
 	return (str + i);
 }
 
-char	*ft_substr(char *s, size_t start, size_t end, int free_data)
+char	*ft_substr_custom(char *s, size_t start, size_t end, int free_data)
 {
 	size_t	i;
 	size_t	str_len;
@@ -57,7 +57,7 @@ char	*ft_substr(char *s, size_t start, size_t end, int free_data)
 	if (!s)
 		return (NULL);
 	i = -1;
-	str_len = ft_strlen(s);
+	str_len = ft_strlen_custom(s);
 	if ((str_len - start) >= end)
 		substr_len = end;
 	else
@@ -75,36 +75,36 @@ char	*ft_substr(char *s, size_t start, size_t end, int free_data)
 	return (substr);
 }
 
-char	*ft_strdup(char *s1)
+char	*ft_strdup_custom(char *s1)
 {
 	size_t	str_len;
 	char	*new_str;
 
 	if (!s1)
 		return (NULL);
-	str_len = ft_strlen(s1);
+	str_len = ft_strlen_custom(s1);
 	new_str = (char *)malloc(sizeof(char) * (str_len + 1));
 	if (new_str == NULL)
 		return (NULL);
-	ft_strlcpy(new_str, s1, str_len + 1);
+	ft_strlcpy_custom(new_str, s1, str_len + 1);
 	return (new_str);
 }
 
-char	*ft_strjoin(char *str1, char *str2)
+char	*ft_strjoin_custom(char *str1, char *str2)
 {
 	int		total_length;
 	char	*result;
 
 	if (!str1)
-		str1 = ft_strdup("");
+		str1 = ft_strdup_custom("");
 	if (str1 == NULL || str2 == NULL)
 		return (str1 = free_array(str1));
-	total_length = ft_strlen(str1) + ft_strlen(str2) + 1;
+	total_length = ft_strlen_custom(str1) + ft_strlen_custom(str2) + 1;
 	result = (char *)malloc(sizeof(char) * total_length);
 	if (!result)
 		return (str1 = free_array(str1));
-	ft_strlcpy(result, str1, total_length);
-	ft_strlcpy(result + ft_strlen(str1), str2, total_length);
+	ft_strlcpy_custom(result, str1, total_length);
+	ft_strlcpy_custom(result + ft_strlen_custom(str1), str2, total_length);
 	if (str1)
 		free(str1);
 	return (result);

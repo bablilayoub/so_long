@@ -6,13 +6,13 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:47:23 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/05 14:03:41 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/23 17:13:01 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-size_t	ft_strlen(char *s)
+size_t	ft_strlen_custom(char *s)
 {
 	size_t	i;
 
@@ -54,7 +54,7 @@ char	*read_data(int fd, char *data)
 	temp = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!temp)
 		return (NULL);
-	while (reading != 0 && !ft_strchr(data, '\n'))
+	while (reading != 0 && !ft_strchr_custom(data, '\n'))
 	{
 		reading = read(fd, temp, BUFFER_SIZE);
 		if (reading == -1)
@@ -62,7 +62,7 @@ char	*read_data(int fd, char *data)
 		if (reading == 0)
 			break ;
 		temp[reading] = '\0';
-		data = ft_strjoin(data, temp);
+		data = ft_strjoin_custom(data, temp);
 	}
 	return (free(temp), data);
 }
@@ -81,11 +81,11 @@ char	*get_next_line(int fd)
 	data[fd] = temp;
 	if (line_len(data[fd]) == 0)
 		return (data[fd] = free_array(data[fd]));
-	line = ft_substr(data[fd], 0, line_len(data[fd]), 0);
+	line = ft_substr_custom(data[fd], 0, line_len(data[fd]), 0);
 	if (!line)
 		return (data[fd] = free_array(data[fd]));
-	data[fd] = ft_substr(data[fd],
-			line_len(data[fd]), ft_strlen(data[fd]) - line_len(data[fd]), 1);
+	data[fd] = ft_substr_custom(data[fd],
+			line_len(data[fd]), ft_strlen_custom(data[fd]) - line_len(data[fd]), 1);
 	if (!data[fd])
 		return (data[fd] = free_array(data[fd]));
 	return (line);

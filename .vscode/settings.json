@@ -2,6 +2,18 @@
     "files.associations": {
         "mlx.h": "c",
         "so_long.h": "c",
-        "ft_printf.h": "c"
+        "ft_printf.h": "c",
+        "unistd.h": "c",
+        "libft.h": "c",
+        "libc.h": "c",
+        "fcntl.h": "c",
+        "stdlib.h": "c",
+        "array": "c",
+        "iterator": "c",
+        "string": "c",
+        "string_view": "c",
+        "vector": "c",
+        "get_next_line.h": "c",
+        "get_next_line_bonus.h": "c"
     }
 }

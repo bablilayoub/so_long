@@ -1,21 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/23 15:50:03 by abablil           #+#    #+#             */
+/*   Updated: 2023/12/23 17:30:28 by abablil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
-
-void my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char *dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
 
 int main(int total, char **args)
 {
-	void *mlx;
-	void *mlx_win;
-	t_data data;
+	t_data game;
+	char *map_name;
 
-	mlx = NULL;
-	mlx_win = NULL;
-	data.map_name = args_handler(total, args);
-	window_maker(mlx, mlx_win, &data);
+	map_name = args_handler(total, args, &game);
+	init_values(&game);
+	init_game(map_name, &game);
 }
