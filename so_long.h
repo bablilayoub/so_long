@@ -51,4 +51,10 @@ void	parse_map(int fd, t_data *game);
 void	render_image(t_data *game);
 void	render_map(t_data *map, int i);
 
+// Handle keys
+void	handle_w_key(t_data *game);
+void	handle_s_key(t_data *game);
+void	handle_d_key(t_data *game);
+void	handle_a_key(t_data *game);
+
 #endif

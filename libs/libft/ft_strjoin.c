@@ -6,13 +6,13 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:38:33 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/15 10:05:36 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/23 23:45:04 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *str1, char const *str2)
+char	*ft_strjoin(char *str1, char *str2)
 {
 	int		total_length;
 	char	*result;
