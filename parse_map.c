@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/25 20:34:28 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/25 21:53:01 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char *get_items(int fd, t_data *game)
 	return (result);
 }
 
-void get_map_hight(t_data *game)
+void get_map_height(t_data *game)
 {
 	int i = 0;
 
@@ -50,11 +50,9 @@ void get_map_hight(t_data *game)
 		i++;
 	}
 }
-
-void check_map_structure(t_data *game)
+void is_valid_map(t_data *game)
 {
-	get_map_hight(game);
-	check_walls(game);
+	(void)game;
 }
 
 void check_map(t_data *game)
@@ -69,7 +67,9 @@ void check_map(t_data *game)
 		i++;
 	}
 	check_map_size(game);
-	check_map_structure(game);
+	get_map_height(game);
+	check_walls(game);
+	is_valid_map(game);
 	remove_new_lines(game);
 }
 
