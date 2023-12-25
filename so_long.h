@@ -21,6 +21,7 @@ typedef struct	s_data
 	char *map_items;
 	void *wall;
 	void *exit;
+	void *exit_closed;
 	void *item;
 	void *player;
 	void *space;

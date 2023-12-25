@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:02:42 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/25 20:07:28 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/25 21:23:23 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	key_hook(int keycode, t_data *game)
 {
 	if (keycode == 53)
 		game->game_over++;
-	else if (keycode == 13)
+	else if (keycode == 13 || keycode == 126)
 		handle_w_key(game);
-	else if (keycode == 1)
+	else if (keycode == 1 || keycode == 125)
 		handle_s_key(game);
-	else if (keycode == 2)
+	else if (keycode == 2 || keycode == 124)
 		handle_d_key(game);
-	else if (keycode == 0)
+	else if (keycode == 0 || keycode == 123)
 		handle_a_key(game);
 	if (game->game_over > 0)
 		close_game(game);

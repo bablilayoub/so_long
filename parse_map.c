@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/25 20:32:16 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/25 20:34:28 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void get_map_hight(t_data *game)
 			i++;
 		if (game->map_items[i] == '\n')
 			i++;
+		i++;
 	}
 }
 

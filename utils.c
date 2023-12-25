@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:45:10 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/25 15:16:34 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/25 20:58:58 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_values(t_data *game)
 	game->map_items = NULL;
 	game->wall = NULL;
 	game->exit = NULL;
+	game->exit_closed = NULL;
 	game->item = NULL;
 	game->player = NULL;
 	game->space = NULL;
