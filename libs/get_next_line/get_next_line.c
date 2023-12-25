@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:47:23 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/23 17:13:01 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/25 21:33:21 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 size_t	ft_strlen_custom(char *s)
 {
@@ -69,24 +69,23 @@ char	*read_data(int fd, char *data)
 
 char	*get_next_line(int fd)
 {
-	static char	*data[OPEN_MAX];
+	static char	*data;
 	char		*line;
 	char		*temp;
 
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0 || BUFFER_SIZE >= INT_MAX)
 		return (NULL);
-	temp = read_data(fd, data[fd]);
+	temp = read_data(fd, data);
 	if (!temp)
-		return (data[fd] = free_array(data[fd]));
-	data[fd] = temp;
-	if (line_len(data[fd]) == 0)
-		return (data[fd] = free_array(data[fd]));
-	line = ft_substr_custom(data[fd], 0, line_len(data[fd]), 0);
+		return (data = free_array(data));
+	data = temp;
+	if (line_len(data) == 0)
+		return (data = free_array(data));
+	line = ft_substr_custom(data, 0, line_len(data), 0);
 	if (!line)
-		return (data[fd] = free_array(data[fd]));
-	data[fd] = ft_substr_custom(data[fd],
-			line_len(data[fd]), ft_strlen_custom(data[fd]) - line_len(data[fd]), 1);
-	if (!data[fd])
-		return (data[fd] = free_array(data[fd]));
+		return (data = free_array(data));
+	data = ft_substr_custom(data, line_len(data), ft_strlen_custom(data) - line_len(data), 1);
+	if (!data)
+		return (data = free_array(data));
 	return (line);
 }

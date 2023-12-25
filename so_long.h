@@ -7,7 +7,7 @@
 #include <fcntl.h>
 #include "libs/ft_printf/ft_printf.h"
 #include "libs/libft/libft.h"
-#include "libs/get_next_line/get_next_line_bonus.h"
+#include "libs/get_next_line/get_next_line.h"
 
 // Game name
 #define GAME_NAME "Run Boy"

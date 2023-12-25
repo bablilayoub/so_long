@@ -4,7 +4,7 @@ OBJ = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LINKS = -lmlx -framework OpenGL -framework AppKit
-LIBS = ./libs/ft_printf/libftprintf.a ./libs/libft/libft.a ./libs/get_next_line/get_next_line_bonus.c ./libs/get_next_line/get_next_line_utils_bonus.c
+LIBS = ./libs/ft_printf/libftprintf.a ./libs/libft/libft.a ./libs/get_next_line/get_next_line.c ./libs/get_next_line/get_next_line_utils.c
 HEADER= so_long.h
 
 all: comp_start $(NAME)
@@ -27,7 +27,7 @@ $(OBJ): $(SRC) $(HEADER)
 
 exe: all
 	@echo "- Executing $(NAME)... \n"
-	@./$(NAME) "maps/map3.ber"
+	@./$(NAME) "maps/map7.ber"
 	@echo "\n- Done -"
 
 clean:
