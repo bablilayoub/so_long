@@ -4,17 +4,19 @@
 #include <mlx.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <limits.h>
 #include <fcntl.h>
-#include <libc.h>
 #include "libs/ft_printf/ft_printf.h"
 #include "libs/libft/libft.h"
 #include "libs/get_next_line/get_next_line_bonus.h"
 
+// Game name
 #define GAME_NAME "Run Boy"
+
+// Items size (pixels)
 #define ITEM_SIZE 48
 
-typedef struct s_data
+// Game struct
+typedef struct	s_data
 {
 	char *map_items;
 	void *wall;
@@ -27,14 +29,15 @@ typedef struct s_data
 	int width;
 	int height;
 	int players;
+	int exits;
 	int game_over;
 	int steps;
-	int score;
-	int max_score;
+	int collected;
+	int collectables;
 } t_data;
 
 // Args handler
-char *args_handler(int total, char **args, t_data *game);
+char	*args_handler(int total, char **args, t_data *game);
 
 /// Utils
 void	init_values(t_data *game);
@@ -49,7 +52,13 @@ void	parse_map(int fd, t_data *game);
 
 // Render
 void	render_image(t_data *game);
-void	render_map(t_data *map, int i);
+void	render_map(t_data *map);
+
+// Valid map
+int		valid_item(char c);
+void	check_walls(t_data *game);
+void	remove_new_lines(t_data *game);
+void	check_map_size(t_data *game);
 
 // Handle keys
 void	handle_w_key(t_data *game);

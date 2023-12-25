@@ -6,15 +6,15 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:35:28 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/23 22:23:53 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/25 20:24:03 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	render_image(t_data *game)
+void render_image(t_data *game)
 {
-	int	h_w;
+	int h_w;
 
 	h_w = ITEM_SIZE;
 	game->wall = mlx_xpm_file_to_image(game->mlx, "assets/wall.xpm", &h_w, &h_w);
@@ -29,32 +29,42 @@ void	render_image(t_data *game)
 		send_error("Missing textures!\n", game);
 	}
 }
-
-void	render_map(t_data *map, int i)
+char *get_element(int *i, t_data *game)
 {
-	int		x;
-	int		y;
-	char	*s;
+	if (game->map_items[*i] == '1')
+		return game->wall;
+	else if (game->map_items[*i] == '0')
+		return game->space;
+	else if (game->map_items[*i] == 'C')
+		return game->item;
+	else if (game->map_items[*i] == 'P')
+		return game->player;
+	else if (game->map_items[*i] == 'E')
+		return game->exit;
+	return NULL;
+}
 
-	y = -1;
-	while (y++ < map->height)
+// 111111111E0P00C111111111
+void render_map(t_data *game)
+{
+	int x;
+	int y;
+	int i;
+	char *element;
+
+	i = 0;
+	y = 0;
+	while (y < game->height)
 	{
 		x = 0;
-		while (x < map->width)
+		while (x < game->width)
 		{
-			if (map->map_items[i] == '1')
-				s = map->wall;
-			if (map->map_items[i] == '0')
-				s = map->space;
-			if (map->map_items[i] == 'C')
-				s = map->item;
-			if (map->map_items[i] == 'P')
-				s = map->player;
-			if (map->map_items[i] == 'E')
-				s = map->exit;
-			mlx_put_image_to_window(map->mlx, map->mlx_win, s, x * ITEM_SIZE, y * ITEM_SIZE);
+			element = get_element(&i, game);
+			if (element)	
+				mlx_put_image_to_window(game->mlx, game->mlx_win, element, x * ITEM_SIZE, y * ITEM_SIZE);
 			i++;
 			x++;
 		}
+		y++;
 	}
 }

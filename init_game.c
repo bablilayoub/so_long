@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:02:42 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/23 23:44:25 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/25 20:07:28 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	key_hook(int keycode, t_data *game)
 	if (game->game_over > 0)
 		close_game(game);
 	mlx_clear_window(game->mlx, game->mlx_win);
-	render_map(game, 0);
+	render_map(game);
 	return (0);
 }
 
@@ -37,7 +37,7 @@ void	start_making(t_data *game)
 	game->mlx_win = mlx_new_window(game->mlx,
 			ITEM_SIZE * game->width, ITEM_SIZE * game->height, GAME_NAME);
 	render_image(game);
-	render_map(game, 0);
+	render_map(game);
 	mlx_hook(game->mlx_win, 17, 0, close_game, game);
 	mlx_key_hook(game->mlx_win, key_hook, game);
 	mlx_loop(game->mlx);
@@ -51,6 +51,5 @@ void	init_game(char *map_name, t_data *game)
 	if (fd == -1)
 		send_error("No such file or directory!\n", game);
 	parse_map(fd, game);
-	return ;
 	start_making(game);
 }

@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:45:10 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/23 22:17:46 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/25 15:16:34 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ void	init_values(t_data *game)
 	game->width = 0;
 	game->height = 0;
 	game->players = 0;
+	game->exits = 0;
 	game->game_over = 0;
 	game->steps = 0;
-	game->score = 0;
-	game->max_score = 0;
+	game->collected = 0;
+	game->collectables = 0;
 }
