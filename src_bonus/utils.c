@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:45:10 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/25 20:58:58 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/26 21:01:26 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void send_error(char *str, t_data *game)
 {
-	if(game->map_items)
+	if (game->map_items)
 		free(game->map_items);
 	ft_printf("%s", str);
 	exit(EXIT_FAILURE);
@@ -41,6 +41,12 @@ void	init_values(t_data *game)
 	game->exit_closed = NULL;
 	game->item = NULL;
 	game->player = NULL;
+	game->player_left = NULL;
+	game->player_right = NULL;
+	game->player_top = NULL;
+	game->enemy = NULL;
+	game->enemy_left = NULL;
+	game->enemy_right = NULL;
 	game->space = NULL;
 	game->mlx = NULL;
 	game->mlx_win = NULL;

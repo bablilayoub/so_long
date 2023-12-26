@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   args_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/23 15:50:03 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/23 17:30:28 by abablil          ###   ########.fr       */
+/*   Created: 2023/12/22 21:08:53 by abablil           #+#    #+#             */
+/*   Updated: 2023/12/23 15:57:27 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int total, char **args)
+char *args_handler(int total, char **args, t_data *game)
 {
-	t_data game;
-	char *map_name;
-
-	map_name = args_handler(total, args, &game);
-	init_values(&game);
-	init_game(map_name, &game);
+    if (total < 2)
+        send_error("Please enter map name ex : map1.ber, map2.ber", game);
+    if (total > 2)
+        send_error("Too may arguments", game);
+    if (!ft_strnstr(args[1], ".ber", ft_strlen(args[1])))
+        send_error("Wrong map fomart, make sure to add .ber at the end", game);
+    return (ft_strtrim(args[1], " "));
 }

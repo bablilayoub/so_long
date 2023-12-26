@@ -5,9 +5,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include "libs/ft_printf/ft_printf.h"
-#include "libs/libft/libft.h"
-#include "libs/get_next_line/get_next_line.h"
+#include "../libs/ft_printf/ft_printf.h"
+#include "../libs/libft/libft.h"
+#include "../libs/get_next_line/get_next_line.h"
 
 // Game name
 #define GAME_NAME "Run Boy"
@@ -24,6 +24,9 @@ typedef struct	s_data
 	void *exit_closed;
 	void *item;
 	void *player;
+	void *player_left;
+	void *player_right;
+	void *player_top;
 	void *space;
 	void *mlx;
 	void *mlx_win;
@@ -36,6 +39,12 @@ typedef struct	s_data
 	int collected;
 	int collectables;
 } t_data;
+
+typedef struct s_player
+{
+	
+} t_player;
+
 
 // Args handler
 char	*args_handler(int total, char **args, t_data *game);
