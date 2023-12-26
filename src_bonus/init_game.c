@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:02:42 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/26 20:00:17 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/26 23:26:31 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int	key_hook(int keycode, t_data *game)
 		close_game(game);
 	mlx_clear_window(game->mlx, game->mlx_win);
 	render_map(game);
+	mlx_string_put(game->mlx, game->mlx_win, game->width / 2 * ITEM_SIZE,
+		game->height * ITEM_SIZE + 12, 0xFFFFFF,
+		ft_strjoin("Moves : ", ft_itoa(game->steps)));
 	return (0);
 }
 
@@ -35,12 +38,15 @@ void	start_making(t_data *game)
 {
 	game->mlx = mlx_init();
 	game->mlx_win = mlx_new_window(game->mlx,
-			ITEM_SIZE * game->width, ITEM_SIZE * game->height, GAME_NAME);
+			ITEM_SIZE * game->width, ITEM_SIZE * game->height + 50, GAME_NAME);
 	render_image(game);
 	render_map(game);
 	mlx_hook(game->mlx_win, 17, 0, close_game, game);
 	mlx_key_hook(game->mlx_win, key_hook, game);
-	mlx_loop_hook(game->mlx, spawn_enemy, game);
+	mlx_loop_hook(game->mlx, handle_enemy, game);
+	mlx_string_put(game->mlx, game->mlx_win, game->width / 2 * ITEM_SIZE,
+		game->height * ITEM_SIZE + 12, 0xFFFFFF,
+		ft_strjoin("Moves : ", ft_itoa(game->steps)));
 	mlx_loop(game->mlx);
 }
 

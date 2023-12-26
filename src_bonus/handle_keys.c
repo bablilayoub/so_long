@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:35:51 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/26 19:17:35 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/26 23:24:05 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void check_exit(t_data *game, char position)
 	{
 		game->game_over++;
 		game->steps++;
-		ft_printf("Moves: %d\n", game->steps);
 		ft_printf("You Win !!\n");
 	}
 }
@@ -29,7 +28,6 @@ void check_enemy(t_data *game, char position)
 	{
 		game->game_over++;
 		game->steps++;
-		ft_printf("Moves: %d\n", game->steps);
 		ft_printf("I got you bro :) !!\n");
 		close_game(game);
 	}
@@ -54,7 +52,6 @@ void	handle_w_key(t_data *game)
 		game->map_items[i - x] = 'P';
 		game->player = game->player_top;
 		game->steps++;
-		ft_printf("Moves: %d\n", game->steps);
 	}
 }
 
@@ -77,7 +74,6 @@ void	handle_s_key(t_data *game)
 		game->map_items[i + x] = 'P';
 		game->player = game->player_right;
 		game->steps++;
-		ft_printf("Moves: %d\n", game->steps);
 	}
 }
 
@@ -100,7 +96,6 @@ void	handle_d_key(t_data *game)
 		game->map_items[i + 1] = 'P';
 		game->player = game->player_right;
 		game->steps++;
-		ft_printf("Moves: %d\n", game->steps);
 	}
 }
 
@@ -123,6 +118,5 @@ void	handle_a_key(t_data *game)
 		game->map_items[i - 1] = 'P';
 		game->player = game->player_left;
 		game->steps++;
-		ft_printf("Moves: %d\n", game->steps);
 	}
 }

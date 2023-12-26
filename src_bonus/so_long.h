@@ -15,6 +15,9 @@
 // Items size (pixels)
 #define ITEM_SIZE 48
 
+// Enemy moves timeout
+#define TIMEOUT 1500
+
 // Game struct
 typedef struct	s_data
 {
@@ -61,9 +64,6 @@ void	parse_map(int fd, t_data *game);
 void	render_image(t_data *game);
 void	render_map(t_data *map);
 
-// Enemy
-int		spawn_enemy(t_data *game);
-
 // Valid map
 int		valid_item(char c);
 void	check_walls(t_data *game);
@@ -75,5 +75,15 @@ void	handle_w_key(t_data *game);
 void	handle_s_key(t_data *game);
 void	handle_d_key(t_data *game);
 void	handle_a_key(t_data *game);
+
+// Enemy
+int		handle_enemy(t_data *game);
+
+// Enemy utils
+void move_enemy_left(t_data *game, int i);
+void move_enemy_right(t_data *game, int i);
+void move_enemy_up(t_data *game, int i);
+void move_enemy_down(t_data *game, int i);
+void handle_player_collision(t_data *game, int i);
 
 #endif
