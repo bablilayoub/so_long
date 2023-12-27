@@ -6,13 +6,13 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:35:51 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/26 15:37:20 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 01:47:26 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void check_exit(t_data *game, char position)
+void	check_exit(t_data *game, char position)
 {
 	if (position == 'E' && game->collectables == game->collected)
 	{
@@ -46,8 +46,8 @@ void	handle_w_key(t_data *game)
 
 void	handle_s_key(t_data *game)
 {
-	int x;
-	int i;
+	int	x;
+	int	i;
 
 	x = game->width;
 	i = 0;
@@ -67,8 +67,8 @@ void	handle_s_key(t_data *game)
 
 void	handle_d_key(t_data *game)
 {
-	int x;
-	int i;
+	int	x;
+	int	i;
 
 	x = game->width;
 	i = 0;
@@ -88,8 +88,8 @@ void	handle_d_key(t_data *game)
 
 void	handle_a_key(t_data *game)
 {
-	int x;
-	int i;
+	int	x;
+	int	i;
 
 	x = game->width;
 	i = 0;

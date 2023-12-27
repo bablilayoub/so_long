@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:47:27 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/25 21:33:32 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 01:19:33 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 5000
 # endif
 
 char	*get_next_line(int fd);

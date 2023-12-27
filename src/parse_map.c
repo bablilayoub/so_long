@@ -6,16 +6,16 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/25 21:53:01 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 01:51:42 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char *get_items(int fd, t_data *game)
+char	*get_items(int fd, t_data *game)
 {
-	char *temp;
-	char *result;
+	char	*temp;
+	char	*result;
 
 	result = ft_strdup("");
 	if (!result)
@@ -23,41 +23,31 @@ char *get_items(int fd, t_data *game)
 	temp = get_next_line(fd);
 	while (temp)
 	{
+		game->height++;
 		if (temp[0] != '\n')
 			result = ft_strjoin(result, temp);
 		else
 		{
 			free(temp);
+			free(result);
 			send_error("Invalid Map ! (Line starts with new line)", game);
 		}
+		free(temp);
 		temp = get_next_line(fd);
 	}
+	if (temp)
+		free(temp);
 	return (result);
 }
 
-void get_map_height(t_data *game)
-{
-	int i = 0;
-
-	while (game->map_items[i])
-	{
-		if (game->map_items[i] != '\n')
-			game->height++;
-		while (game->map_items[i] && game->map_items[i] != '\n')
-			i++;
-		if (game->map_items[i] == '\n')
-			i++;
-		i++;
-	}
-}
-void is_valid_map(t_data *game)
+void	is_valid_map(t_data *game)
 {
 	(void)game;
 }
 
-void check_map(t_data *game)
+void	check_map(t_data *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (game->map_items[i])
@@ -67,15 +57,14 @@ void check_map(t_data *game)
 		i++;
 	}
 	check_map_size(game);
-	get_map_height(game);
 	check_walls(game);
 	is_valid_map(game);
 	remove_new_lines(game);
 }
 
-void parse_map(int fd, t_data *game)
+void	parse_map(int fd, t_data *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	game->map_items = get_items(fd, game);
@@ -95,5 +84,6 @@ void parse_map(int fd, t_data *game)
 	if (game->exits != 1)
 		send_error("Invalid Map! (1 exit is required)", game);
 	if (game->collectables == 0)
-		send_error("Invalid Map! (at least 1 collectable must be on the map)", game);
+		send_error("Invalid Map! (at least 1 collectable must be on the map)",
+			game);
 }

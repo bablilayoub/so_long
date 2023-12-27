@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:45:10 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/26 23:21:39 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 00:00:18 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,18 @@ void	init_values(t_data *game)
 	game->steps = 0;
 	game->collected = 0;
 	game->collectables = 0;
+}
+
+void render_moves(t_data *game)
+{
+	char *moves;
+	char *text;
+	
+	moves = ft_itoa(game->steps);
+	text = ft_strjoin("Moves : ", moves);
+	mlx_string_put(game->mlx, game->mlx_win,
+		game->width / 2 * ITEM_SIZE,
+		game->height * ITEM_SIZE + 12, 0xFFFFFF, text);
+	free(moves);
+	free(text);
 }

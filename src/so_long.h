@@ -1,50 +1,56 @@
-#ifndef SO_LONG_H
-#define SO_LONG_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/27 01:51:54 by abablil           #+#    #+#             */
+/*   Updated: 2023/12/27 01:53:09 by abablil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <mlx.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include "../libs/ft_printf/ft_printf.h"
-#include "../libs/libft/libft.h"
-#include "../libs/get_next_line/get_next_line.h"
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
+# include <mlx.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include "../libs/ft_printf/ft_printf.h"
+# include "../libs/libft/libft.h"
+# include "../libs/get_next_line/get_next_line.h"
 
 // Game name
-#define GAME_NAME "Run Boy"
+# define GAME_NAME "Run Boy"
 
 // Items size (pixels)
-#define ITEM_SIZE 48
+# define ITEM_SIZE 48
 
 // Game struct
-typedef struct	s_data
+typedef struct s_data
 {
-	char *map_items;
-	void *wall;
-	void *exit;
-	void *exit_closed;
-	void *item;
-	void *player;
-	void *player_left;
-	void *player_right;
-	void *player_top;
-	void *space;
-	void *mlx;
-	void *mlx_win;
-	int width;
-	int height;
-	int players;
-	int exits;
-	int game_over;
-	int steps;
-	int collected;
-	int collectables;
-} t_data;
-
-typedef struct s_player
-{
-	
-} t_player;
-
+	char	*map_items;
+	void	*wall;
+	void	*exit;
+	void	*exit_closed;
+	void	*item;
+	void	*player;
+	void	*player_left;
+	void	*player_right;
+	void	*player_top;
+	void	*space;
+	void	*mlx;
+	void	*mlx_win;
+	int		width;
+	int		height;
+	int		players;
+	int		exits;
+	int		game_over;
+	int		steps;
+	int		collected;
+	int		collectables;
+}	t_data;
 
 // Args handler
 char	*args_handler(int total, char **args, t_data *game);
@@ -69,6 +75,7 @@ int		valid_item(char c);
 void	check_walls(t_data *game);
 void	remove_new_lines(t_data *game);
 void	check_map_size(t_data *game);
+void	free_2d(char **str);
 
 // Handle keys
 void	handle_w_key(t_data *game);

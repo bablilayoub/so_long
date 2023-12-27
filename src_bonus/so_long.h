@@ -53,6 +53,7 @@ char	*args_handler(int total, char **args, t_data *game);
 void	init_values(t_data *game);
 void	send_error(char *str, t_data *game);
 int		close_game(t_data *game);
+void 	render_moves(t_data *game);
 
 // Init game
 void	init_game(char *map_name, t_data *game);

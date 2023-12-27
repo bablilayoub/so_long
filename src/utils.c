@@ -6,24 +6,25 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:45:10 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/26 21:01:19 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 01:53:23 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void send_error(char *str, t_data *game)
+void	free_game(t_data *game)
 {
 	if (game->map_items)
 		free(game->map_items);
-	ft_printf("%s", str);
-	exit(EXIT_FAILURE);
-}
-void	free_game(t_data *game)
-{
-	free(game->map_items);
 	if (game->mlx)
 		free(game->mlx);
+}
+
+void	send_error(char *str, t_data *game)
+{
+	free_game(game);
+	ft_printf("%s", str);
+	exit(EXIT_FAILURE);
 }
 
 int	close_game(t_data *game)
@@ -33,6 +34,7 @@ int	close_game(t_data *game)
 	ft_printf("%s closed !", GAME_NAME);
 	exit(EXIT_SUCCESS);
 }
+
 void	init_values(t_data *game)
 {
 	game->map_items = NULL;
