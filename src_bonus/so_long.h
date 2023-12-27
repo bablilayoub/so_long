@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 02:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 02:06:51 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 06:43:44 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,6 @@ void	move_enemy_left(t_data *game, int i);
 void	move_enemy_right(t_data *game, int i);
 void	move_enemy_up(t_data *game, int i);
 void	move_enemy_down(t_data *game, int i);
-void	handle_player_collision(t_data *game, int i);
+void	game_over(t_data *game, int i);
 
 #endif

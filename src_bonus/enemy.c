@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 19:20:39 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 02:09:19 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 06:43:36 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	handle_spawn_enemy(t_data *game, int *i, int *temp, int *a_s)
 void	handle_player_collisions(t_data *game, int i)
 {
 	if (game->map_items[i - 1] == 'P')
-		handle_player_collision(game, i - 1);
+		game_over(game, i - 1);
 	if (game->map_items[i + 1] == 'P')
-		handle_player_collision(game, i + 1);
+		game_over(game, i + 1);
 }
 
 void	handle_move_enemy(t_data *game, int i, int *go_back)

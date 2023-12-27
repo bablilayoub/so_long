@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 01:51:42 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 05:26:02 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ char	*get_items(int fd, t_data *game)
 	if (temp)
 		free(temp);
 	return (result);
-}
-
-void	is_valid_map(t_data *game)
-{
-	(void)game;
 }
 
 void	check_map(t_data *game)

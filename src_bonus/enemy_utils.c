@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 22:39:07 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 02:09:43 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 06:43:40 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	move_enemy_down(t_data *game, int i)
 	game->enemy = game->enemy_left;
 }
 
-void	handle_player_collision(t_data *game, int i)
+void	game_over(t_data *game, int i)
 {
 	game->map_items[i] = '0';
 	game->game_over++;
