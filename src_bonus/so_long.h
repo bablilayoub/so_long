@@ -1,50 +1,62 @@
-#ifndef SO_LONG_H
-#define SO_LONG_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/27 02:06:01 by abablil           #+#    #+#             */
+/*   Updated: 2023/12/27 02:06:51 by abablil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <mlx.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include "../libs/ft_printf/ft_printf.h"
-#include "../libs/libft/libft.h"
-#include "../libs/get_next_line/get_next_line.h"
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
+# include <mlx.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include "../libs/ft_printf/ft_printf.h"
+# include "../libs/libft/libft.h"
+# include "../libs/get_next_line/get_next_line.h"
 
 // Game name
-#define GAME_NAME "Run Boy"
+# define GAME_NAME "Run Boy"
 
 // Items size (pixels)
-#define ITEM_SIZE 48
+# define ITEM_SIZE 48
 
 // Enemy moves timeout
-#define TIMEOUT 1500
+# define TIMEOUT 1500
 
 // Game struct
-typedef struct	s_data
+typedef struct s_data
 {
-	char *map_items;
-	void *wall;
-	void *exit;
-	void *exit_closed;
-	void *item;
-	void *space;
-	void *player;
-	void *player_left;
-	void *player_right;
-	void *player_top;
-	void *enemy;
-	void *enemy_left;
-	void *enemy_right;
-	void *mlx;
-	void *mlx_win;
-	int width;
-	int height;
-	int players;
-	int exits;
-	int game_over;
-	int steps;
-	int collected;
-	int collectables;
-} t_data;
+	char	*map_items;
+	void	*wall;
+	void	*exit;
+	void	*exit_closed;
+	void	*item;
+	void	*space;
+	void	*player;
+	void	*player_left;
+	void	*player_right;
+	void	*player_top;
+	void	*enemy;
+	void	*enemy_left;
+	void	*enemy_right;
+	void	*mlx;
+	void	*mlx_win;
+	int		width;
+	int		height;
+	int		players;
+	int		exits;
+	int		game_over;
+	int		steps;
+	int		collected;
+	int		collectables;
+}	t_data;
 
 // Args handler
 char	*args_handler(int total, char **args, t_data *game);
@@ -53,7 +65,7 @@ char	*args_handler(int total, char **args, t_data *game);
 void	init_values(t_data *game);
 void	send_error(char *str, t_data *game);
 int		close_game(t_data *game);
-void 	render_moves(t_data *game);
+void	render_moves(t_data *game);
 
 // Init game
 void	init_game(char *map_name, t_data *game);
@@ -81,10 +93,10 @@ void	handle_a_key(t_data *game);
 int		handle_enemy(t_data *game);
 
 // Enemy utils
-void move_enemy_left(t_data *game, int i);
-void move_enemy_right(t_data *game, int i);
-void move_enemy_up(t_data *game, int i);
-void move_enemy_down(t_data *game, int i);
-void handle_player_collision(t_data *game, int i);
+void	move_enemy_left(t_data *game, int i);
+void	move_enemy_right(t_data *game, int i);
+void	move_enemy_up(t_data *game, int i);
+void	move_enemy_down(t_data *game, int i);
+void	handle_player_collision(t_data *game, int i);
 
 #endif

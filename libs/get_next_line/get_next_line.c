@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:47:23 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/25 21:33:21 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 02:10:09 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ char	*get_next_line(int fd)
 	line = ft_substr_custom(data, 0, line_len(data), 0);
 	if (!line)
 		return (data = free_array(data));
-	data = ft_substr_custom(data, line_len(data), ft_strlen_custom(data) - line_len(data), 1);
+	data = ft_substr_custom(data, line_len(data),
+			ft_strlen_custom(data) - line_len(data), 1);
 	if (!data)
 		return (data = free_array(data));
 	return (line);

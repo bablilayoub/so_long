@@ -27,7 +27,7 @@ $(OBJ): $(SRC) $(HEADER)
 
 exe: all
 	@echo "- Executing $(NAME)... \n"
-	@./$(NAME) "../maps/map2.ber"
+	@./$(NAME) "../maps/map1.ber"
 
 clean:
 	@echo "- Removing object files..."

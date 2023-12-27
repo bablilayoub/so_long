@@ -6,24 +6,25 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:45:10 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 00:00:18 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 02:12:11 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void send_error(char *str, t_data *game)
+void	free_game(t_data *game)
 {
 	if (game->map_items)
 		free(game->map_items);
-	ft_printf("%s", str);
-	exit(EXIT_FAILURE);
-}
-void	free_game(t_data *game)
-{
-	free(game->map_items);
 	if (game->mlx)
 		free(game->mlx);
+}
+
+void	send_error(char *str, t_data *game)
+{
+	free_game(game);
+	ft_printf("%s", str);
+	exit(EXIT_FAILURE);
 }
 
 int	close_game(t_data *game)
@@ -33,6 +34,7 @@ int	close_game(t_data *game)
 	ft_printf("%s closed !", GAME_NAME);
 	exit(EXIT_SUCCESS);
 }
+
 void	init_values(t_data *game)
 {
 	game->map_items = NULL;
@@ -60,13 +62,15 @@ void	init_values(t_data *game)
 	game->collectables = 0;
 }
 
-void render_moves(t_data *game)
+void	render_moves(t_data *game)
 {
-	char *moves;
-	char *text;
-	
+	char	*moves;
+	char	*text;
+	char	*temp;
+
 	moves = ft_itoa(game->steps);
-	text = ft_strjoin("Moves : ", moves);
+	temp = ft_strdup("Moves : ");
+	text = ft_strjoin(temp, moves);
 	mlx_string_put(game->mlx, game->mlx_win,
 		game->width / 2 * ITEM_SIZE,
 		game->height * ITEM_SIZE + 12, 0xFFFFFF, text);

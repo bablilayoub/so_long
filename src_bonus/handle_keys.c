@@ -6,24 +6,21 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:35:51 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/26 23:24:05 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 02:15:31 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void check_exit(t_data *game, char position)
+void	check_exit_and_enemy(t_data *game, char position)
 {
 	if (position == 'E' && game->collectables == game->collected)
 	{
 		game->game_over++;
 		game->steps++;
+		ft_printf("Moves: %d\n", game->steps);
 		ft_printf("You Win !!\n");
 	}
-}
-
-void check_enemy(t_data *game, char position)
-{
 	if (position == 'X')
 	{
 		game->game_over++;
@@ -42,8 +39,7 @@ void	handle_w_key(t_data *game)
 	i = 0;
 	while (game->map_items[i] != 'P')
 		i++;
-	check_exit(game, game->map_items[i - x]);
-	check_enemy(game, game->map_items[i - x]);
+	check_exit_and_enemy(game, game->map_items[i - x]);
 	if (game->map_items[i - x] != '1' && game->map_items[i - x] != 'E')
 	{
 		if (game->map_items[i - x] == 'C')
@@ -57,15 +53,14 @@ void	handle_w_key(t_data *game)
 
 void	handle_s_key(t_data *game)
 {
-	int x;
-	int i;
+	int	x;
+	int	i;
 
 	x = game->width;
 	i = 0;
 	while (game->map_items[i] != 'P')
 		i++;
-	check_exit(game, game->map_items[i + x]);
-	check_enemy(game, game->map_items[i + x]);
+	check_exit_and_enemy(game, game->map_items[i + x]);
 	if (game->map_items[i + x] != '1' && game->map_items[i + x] != 'E')
 	{
 		if (game->map_items[i + x] == 'C')
@@ -79,15 +74,14 @@ void	handle_s_key(t_data *game)
 
 void	handle_d_key(t_data *game)
 {
-	int x;
-	int i;
+	int	x;
+	int	i;
 
 	x = game->width;
 	i = 0;
 	while (game->map_items[i] != 'P')
 		i++;
-	check_exit(game, game->map_items[i + 1]);
-	check_enemy(game, game->map_items[i + 1]);
+	check_exit_and_enemy(game, game->map_items[i + 1]);
 	if (game->map_items[i + 1] != '1' && game->map_items[i + 1] != 'E')
 	{
 		if (game->map_items[i + 1] == 'C')
@@ -101,15 +95,14 @@ void	handle_d_key(t_data *game)
 
 void	handle_a_key(t_data *game)
 {
-	int x;
-	int i;
+	int	x;
+	int	i;
 
 	x = game->width;
 	i = 0;
 	while (game->map_items[i] != 'P')
 		i++;
-	check_exit(game, game->map_items[i - 1]);
-	check_enemy(game, game->map_items[i - 1]);
+	check_exit_and_enemy(game, game->map_items[i - 1]);
 	if (game->map_items[i - 1] != '1' && game->map_items[i - 1] != 'E')
 	{
 		if (game->map_items[i - 1] == 'C')

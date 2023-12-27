@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:02:42 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/26 23:37:44 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 01:59:46 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@ int	key_hook(int keycode, t_data *game)
 void	start_making(t_data *game)
 {
 	game->mlx = mlx_init();
+	if (!game->mlx)
+		send_error("Faild to init mlx", game);
 	game->mlx_win = mlx_new_window(game->mlx,
 			ITEM_SIZE * game->width, ITEM_SIZE * game->height + 50, GAME_NAME);
+	if (!game->mlx_win)
+		send_error("Faild to init mlx", game);
 	render_image(game);
 	render_map(game);
 	mlx_hook(game->mlx_win, 17, 0, close_game, game);

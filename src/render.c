@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:35:28 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 01:51:26 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/27 02:05:50 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	render_map(t_data *game)
 			if (element)
 				mlx_put_image_to_window(game->mlx,
 					game->mlx_win, element, x * ITEM_SIZE, y * ITEM_SIZE);
+			else
+				send_error("Faild to get element", game);
 			i++;
 			x++;
 		}
