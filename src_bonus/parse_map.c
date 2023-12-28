@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 02:00:46 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/28 12:07:59 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,64 @@ char	*get_items(int fd, t_data *game)
 	return (result);
 }
 
+void	can_i_reach_items(char *map, int p, int x, int *found_exit)
+{
+	if (map[p + 1] == 'E' || map[p - 1] == 'E'
+		|| map[p + x] == 'E' || map[p - x] == 'E')
+		*found_exit = 1;
+	if (map[p + x] == '0' || map[p + x] == 'C')
+	{
+		map[p + x] = 'P';
+		can_i_reach_items(map, p + x, x, found_exit);
+	}
+	if (map[p - x] == '0' || map[p - x] == 'C')
+	{
+		map[p - x] = 'P';
+		can_i_reach_items(map, p - x, x, found_exit);
+	}
+	if (map[p + 1] == '0' || map[p + 1] == 'C')
+	{
+		map[p + 1] = 'P';
+		can_i_reach_items(map, p + 1, x, found_exit);
+	}
+	if (map[p - 1] == '0' || map[p - 1] == 'C')
+	{
+		map[p - 1] = 'P';
+		can_i_reach_items(map, p - 1, x, found_exit);
+	}
+}
+
 void	is_valid_map(t_data *game)
 {
-	(void)game;
+	int		found_exit;
+	int		i;
+	char	*map;
+
+	found_exit = 0;
+	i = 0;
+	map = ft_strdup(game->map_items);
+	if (!map)
+		return (send_error("Faild to alllocate map", game));
+	while (map[i] != 'P')
+		i++;
+	can_i_reach_items(map, i, game->width, &found_exit);
+	i = 0;
+	while (map[i])
+	{
+		if (map[i] == 'C')
+		{
+			free(map);
+			return (send_error("Invalid Map, collectables surrounded by walls",
+					game));
+		}
+		i++;
+	}
+	check_if_found_exit(game, found_exit, map);
 }
 
 void	check_map(t_data *game)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (game->map_items[i])
@@ -58,8 +108,8 @@ void	check_map(t_data *game)
 	}
 	check_map_size(game);
 	check_walls(game);
-	is_valid_map(game);
 	remove_new_lines(game);
+	is_valid_map(game);
 }
 
 void	parse_map(int fd, t_data *game)
@@ -68,7 +118,6 @@ void	parse_map(int fd, t_data *game)
 
 	i = 0;
 	game->map_items = get_items(fd, game);
-	check_map(game);
 	while (game->map_items[i])
 	{
 		if (game->map_items[i] == 'C')
@@ -86,4 +135,5 @@ void	parse_map(int fd, t_data *game)
 	if (game->collectables == 0)
 		send_error("Invalid Map! (at least 1 collectable must be on the map)",
 			game);
+	check_map(game);
 }

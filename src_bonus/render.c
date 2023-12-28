@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:35:28 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 02:05:44 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/28 09:36:08 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	render_image(t_data *game)
 
 	h_w = ITEM_SIZE;
 	init_xpm(game, &h_w);
+	init_teleport(game);
 	game->enemy = mlx_xpm_file_to_image(game->mlx,
 			"../assets/enemy.xpm", &h_w, &h_w);
 	game->enemy_left = mlx_xpm_file_to_image(game->mlx,
@@ -69,6 +70,10 @@ char	*get_element(int *i, t_data *game)
 		return (game->player);
 	else if (game->map_items[*i] == 'X')
 		return (game->enemy);
+	else if (game->map_items[*i] == 'N')
+		return (game->door_enter);
+	else if (game->map_items[*i] == 'M')
+		return (game->door_exit);
 	else if (game->map_items[*i] == 'E'
 		&& game->collectables != game->collected)
 		return (game->exit_closed);

@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:02:42 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 01:59:46 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/28 09:34:01 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ int	key_hook(int keycode, t_data *game)
 		handle_d_key(game);
 	else if (keycode == 0 || keycode == 123)
 		handle_a_key(game);
+	else if (keycode == 14)
+		handle_e_key(game);
 	if (game->game_over > 0)
 		close_game(game);
 	mlx_clear_window(game->mlx, game->mlx_win);
 	render_map(game);
-	render_moves(game);
+	render_moves_and_collected(game);
 	return (0);
 }
 
@@ -44,9 +46,9 @@ void	start_making(t_data *game)
 	render_image(game);
 	render_map(game);
 	mlx_hook(game->mlx_win, 17, 0, close_game, game);
-	mlx_key_hook(game->mlx_win, key_hook, game);
+	mlx_hook(game->mlx_win, 2, 0, key_hook, game);
 	mlx_loop_hook(game->mlx, handle_enemy, game);
-	render_moves(game);
+	render_moves_and_collected(game);
 	mlx_loop(game->mlx);
 }
 

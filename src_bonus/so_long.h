@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 02:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 06:43:44 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/28 12:58:36 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define ITEM_SIZE 48
 
 // Enemy moves timeout
-# define TIMEOUT 1500
+# define TIMEOUT 1000
 
 // Game struct
 typedef struct s_data
@@ -46,6 +46,8 @@ typedef struct s_data
 	void	*enemy;
 	void	*enemy_left;
 	void	*enemy_right;
+	void	*door_exit;
+	void	*door_enter;
 	void	*mlx;
 	void	*mlx_win;
 	int		width;
@@ -65,13 +67,14 @@ char	*args_handler(int total, char **args, t_data *game);
 void	init_values(t_data *game);
 void	send_error(char *str, t_data *game);
 int		close_game(t_data *game);
-void	render_moves(t_data *game);
+void	render_moves_and_collected(t_data *game);
 
 // Init game
 void	init_game(char *map_name, t_data *game);
 
 // Parse map
 void	parse_map(int fd, t_data *game);
+void	check_if_found_exit(t_data *game, int found_exit, char *map);
 
 // Render
 void	render_image(t_data *game);
@@ -88,6 +91,8 @@ void	handle_w_key(t_data *game);
 void	handle_s_key(t_data *game);
 void	handle_d_key(t_data *game);
 void	handle_a_key(t_data *game);
+void	handle_e_key(t_data *game);
+void	check_exit_and_enemy(t_data *game, char position);
 
 // Enemy
 int		handle_enemy(t_data *game);
@@ -98,5 +103,13 @@ void	move_enemy_right(t_data *game, int i);
 void	move_enemy_up(t_data *game, int i);
 void	move_enemy_down(t_data *game, int i);
 void	game_over(t_data *game, int i);
+
+// Teleport
+void	init_teleport(t_data *game);
+void	spawn_portals(t_data *game);
+int		check_for_portals(t_data *game, char position);
+void	destroy_portals(t_data *game);
+void	spawn_portal_enter(t_data *game, int *i, int *temp);
+void	spawn_portal_exit(t_data *game, int *i, int *temp);
 
 #endif

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handle_keys_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/23 15:50:03 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/28 10:25:24 by abablil          ###   ########.fr       */
+/*   Created: 2023/12/28 10:14:21 by abablil           #+#    #+#             */
+/*   Updated: 2023/12/28 10:14:32 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int total, char **args)
+void	check_exit_and_enemy(t_data *game, char position)
 {
-	t_data	game;
-	char	*map_name;
-
-	init_values(&game);
-	map_name = args_handler(total, args, &game);
-	init_game(map_name, &game);
+	if (position == 'E' && game->collectables == game->collected)
+	{
+		game->game_over++;
+		game->steps++;
+		ft_printf("You Win !!\n");
+	}
+	if (position == 'X')
+	{
+		game->game_over++;
+		game->steps++;
+		ft_printf("I got you bro :) !!\n");
+		close_game(game);
+	}
 }
