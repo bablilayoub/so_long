@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teleport.c                                         :+:      :+:    :+:   */
+/*   teleport_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 06:47:57 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/28 12:34:41 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/28 19:40:33 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	init_teleport(t_data *game)
 {
@@ -96,7 +96,6 @@ int	check_for_portals(t_data *game, char position)
 	temp = 0;
 	while (game->map_items[p] != 'P')
 		p++;
-	game->steps++;
 	if (position == 'N')
 		return (teleport_player(game, i, temp, p));
 	if (position == 'M')

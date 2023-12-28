@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teleport_utils.c                                   :+:      :+:    :+:   */
+/*   teleport_utils_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 10:04:26 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/28 10:21:55 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/28 17:51:48 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	spawn_portal_enter(t_data *game, int *i, int *temp)
 {

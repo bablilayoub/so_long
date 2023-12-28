@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*   handle_keys_utils_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 11:19:00 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/28 12:08:02 by abablil          ###   ########.fr       */
+/*   Created: 2023/12/28 10:14:21 by abablil           #+#    #+#             */
+/*   Updated: 2023/12/28 17:51:17 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	check_if_found_exit(t_data *game, int found_exit, char *map)
+void	check_exit_and_enemy(t_data *game, char position)
 {
-	if (!found_exit)
+	if (position == 'E' && game->collectables == game->collected)
 	{
-		free(map);
-		return (send_error("Invalid Map, Exit surrounded by walls",
-				game));
+		game->game_over++;
+		game->steps++;
+		ft_printf("You Win !!\n");
 	}
-	free(map);
+	if (position == 'X')
+	{
+		game->game_over++;
+		game->steps++;
+		ft_printf("I got you bro :) !!\n");
+		close_game(game);
+	}
 }

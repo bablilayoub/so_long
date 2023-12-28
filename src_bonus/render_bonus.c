@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:35:28 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/28 09:36:08 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/28 17:52:21 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	init_xpm(t_data *game, int *h_w)
 {
@@ -34,6 +34,28 @@ void	init_xpm(t_data *game, int *h_w)
 			"../assets/space.xpm", h_w, h_w);
 }
 
+void	render_enemy(t_data *game, int h_w)
+{
+	game->enemy = mlx_xpm_file_to_image(game->mlx,
+			"../assets/enemy.xpm", &h_w, &h_w);
+	game->enemy_right_1 = mlx_xpm_file_to_image(game->mlx,
+			"../assets/enemy_right_1.xpm", &h_w, &h_w);
+	game->enemy_right_2 = mlx_xpm_file_to_image(game->mlx,
+			"../assets/enemy_right_2.xpm", &h_w, &h_w);
+	game->enemy_right_3 = mlx_xpm_file_to_image(game->mlx,
+			"../assets/enemy_right_3.xpm", &h_w, &h_w);
+	game->enemy_right_4 = mlx_xpm_file_to_image(game->mlx,
+			"../assets/enemy_right_4.xpm", &h_w, &h_w);
+	game->enemy_right_4 = mlx_xpm_file_to_image(game->mlx,
+			"../assets/enemy_right_4.xpm", &h_w, &h_w);
+	game->enemy_right_5 = mlx_xpm_file_to_image(game->mlx,
+			"../assets/enemy_right_5.xpm", &h_w, &h_w);
+	game->enemy_right_6 = mlx_xpm_file_to_image(game->mlx,
+			"../assets/enemy_right_6.xpm", &h_w, &h_w);
+	game->enemy_right_7 = mlx_xpm_file_to_image(game->mlx,
+			"../assets/enemy_right_7.xpm", &h_w, &h_w);
+}
+
 void	render_image(t_data *game)
 {
 	int	h_w;
@@ -41,16 +63,16 @@ void	render_image(t_data *game)
 	h_w = ITEM_SIZE;
 	init_xpm(game, &h_w);
 	init_teleport(game);
-	game->enemy = mlx_xpm_file_to_image(game->mlx,
-			"../assets/enemy.xpm", &h_w, &h_w);
-	game->enemy_left = mlx_xpm_file_to_image(game->mlx,
-			"../assets/enemy_left.xpm", &h_w, &h_w);
-	game->enemy_right = mlx_xpm_file_to_image(game->mlx,
-			"../assets/enemy_right.xpm", &h_w, &h_w);
+	render_enemy(game, h_w);
+	render_enemy_left(game, h_w);
 	if (!game->wall || !game->exit || !game->item
-		|| !game->player || !game->player_left
+		|| !game->player || !game->player_left || !game->enemy_left_1
 		|| !game->player_right || !game->player_top || !game->space
-		|| !game->exit_closed || !game->enemy_left || !game->enemy_right)
+		|| !game->exit_closed || !game->enemy_right_1 || !game->enemy
+		|| !game->enemy_right_2 || !game->enemy_right_3 || !game->enemy_right_4
+		|| !game->enemy_right_5 || !game->enemy_right_6 || !game->enemy_right_7
+		|| !game->enemy_left_2 || !game->enemy_left_3 || !game->enemy_left_4
+		|| !game->enemy_left_5 || !game->enemy_left_6 || !game->enemy_left_7)
 	{
 		free(game->mlx_win);
 		free(game->mlx);

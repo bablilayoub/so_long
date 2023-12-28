@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 02:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/28 12:58:36 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/28 17:51:58 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <mlx.h>
 # include <unistd.h>
@@ -28,7 +28,7 @@
 # define ITEM_SIZE 48
 
 // Enemy moves timeout
-# define TIMEOUT 1000
+# define TIMEOUT 1500
 
 // Game struct
 typedef struct s_data
@@ -44,8 +44,20 @@ typedef struct s_data
 	void	*player_right;
 	void	*player_top;
 	void	*enemy;
-	void	*enemy_left;
-	void	*enemy_right;
+	void	*enemy_left_1;
+	void	*enemy_left_2;
+	void	*enemy_left_3;
+	void	*enemy_left_4;
+	void	*enemy_left_5;
+	void	*enemy_left_6;
+	void	*enemy_left_7;
+	void	*enemy_right_1;
+	void	*enemy_right_2;
+	void	*enemy_right_3;
+	void	*enemy_right_4;
+	void	*enemy_right_5;
+	void	*enemy_right_6;
+	void	*enemy_right_7;
 	void	*door_exit;
 	void	*door_enter;
 	void	*mlx;
@@ -100,9 +112,9 @@ int		handle_enemy(t_data *game);
 // Enemy utils
 void	move_enemy_left(t_data *game, int i);
 void	move_enemy_right(t_data *game, int i);
-void	move_enemy_up(t_data *game, int i);
-void	move_enemy_down(t_data *game, int i);
+void	move_enemy_up_and_down(t_data *game, int i, int where);
 void	game_over(t_data *game, int i);
+void	render_enemy_left(t_data *game, int h_w);
 
 // Teleport
 void	init_teleport(t_data *game);

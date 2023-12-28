@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:45:10 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/28 08:31:12 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/28 18:14:36 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	free_game(t_data *game)
 {
@@ -47,8 +47,6 @@ void	init_values(t_data *game)
 	game->player_right = NULL;
 	game->player_top = NULL;
 	game->enemy = NULL;
-	game->enemy_left = NULL;
-	game->enemy_right = NULL;
 	game->space = NULL;
 	game->mlx = NULL;
 	game->mlx_win = NULL;
@@ -80,7 +78,7 @@ void	render_moves_and_collected(t_data *game)
 	temp = ft_strdup("Collected : ");
 	text = ft_strjoin(temp, value);
 	mlx_string_put(game->mlx, game->mlx_win,
-		game->width * ITEM_SIZE - 140,
+		game->width * ITEM_SIZE - 150,
 		game->height * ITEM_SIZE + 12, 0xFFFFFF, text);
 	free(value);
 	free(text);

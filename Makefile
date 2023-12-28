@@ -21,3 +21,5 @@ clean:
 fclean: 
 	cd src && make fclean
 	cd src_bonus && make fclean
+
+.PHONY: bonus exe exe_bonus clean fclean

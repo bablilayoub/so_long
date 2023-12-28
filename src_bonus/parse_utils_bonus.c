@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_handler.c                                     :+:      :+:    :+:   */
+/*   parse_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 21:08:53 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 01:55:54 by abablil          ###   ########.fr       */
+/*   Created: 2023/12/28 11:19:00 by abablil           #+#    #+#             */
+/*   Updated: 2023/12/28 17:52:27 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-char	*args_handler(int total, char **args, t_data *game)
+void	check_if_found_exit(t_data *game, int found_exit, char *map)
 {
-	if (total < 2)
-		send_error("Please enter map name ex : map1.ber, map2.ber", game);
-	if (total > 2)
-		send_error("Too may arguments", game);
-	if (!ft_strnstr(args[1], ".ber", ft_strlen(args[1])))
-		send_error("Wrong map fomart, make sure to add .ber at the end", game);
-	return (ft_strtrim(args[1], " "));
+	if (!found_exit)
+	{
+		free(map);
+		return (send_error("Invalid Map, Exit surrounded by walls",
+				game));
+	}
+	free(map);
 }

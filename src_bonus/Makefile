@@ -1,11 +1,15 @@
 NAME = so_long
-SRC = main.c args_handler.c init_game.c parse_map.c parse_utils.c utils.c render.c handle_keys.c handle_keys_utils.c valid_map.c enemy.c enemy_utils.c teleport.c teleport_utils.c
+SRC =	main_bonus.c args_handler_bonus.c init_game_bonus.c parse_map_bonus.c \
+		parse_utils_bonus.c utils_bonus.c render_bonus.c handle_keys_bonus.c \
+		handle_keys_utils_bonus.c valid_map_bonus.c enemy_bonus.c enemy_utils_bonus.c \
+		teleport_bonus.c teleport_utils_bonus.c
+LIBS =	../libs/ft_printf/libftprintf.a ../libs/libft/libft.a \
+		../libs/get_next_line/get_next_line.c ../libs/get_next_line/get_next_line_utils.c
 OBJ = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LINKS = -lmlx -framework OpenGL -framework AppKit
-LIBS = ../libs/ft_printf/libftprintf.a ../libs/libft/libft.a ../libs/get_next_line/get_next_line.c ../libs/get_next_line/get_next_line_utils.c
-HEADER= so_long.h
+HEADER= so_long_bonus.h
 
 all: comp_start $(NAME)
 
@@ -27,7 +31,7 @@ $(OBJ): $(SRC) $(HEADER)
 
 exe: all
 	@echo "- Executing $(NAME)... \n"
-	@./$(NAME) "../maps/map2.ber"
+	@./$(NAME) "../maps/map3.ber"
 
 clean:
 	@echo "- Removing object files..."

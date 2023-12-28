@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_keys_utils.c                                :+:      :+:    :+:   */
+/*   args_handler_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 10:14:21 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/28 10:14:32 by abablil          ###   ########.fr       */
+/*   Created: 2023/12/22 21:08:53 by abablil           #+#    #+#             */
+/*   Updated: 2023/12/28 17:51:06 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	check_exit_and_enemy(t_data *game, char position)
+char	*args_handler(int total, char **args, t_data *game)
 {
-	if (position == 'E' && game->collectables == game->collected)
-	{
-		game->game_over++;
-		game->steps++;
-		ft_printf("You Win !!\n");
-	}
-	if (position == 'X')
-	{
-		game->game_over++;
-		game->steps++;
-		ft_printf("I got you bro :) !!\n");
-		close_game(game);
-	}
+	if (total < 2)
+		send_error("Please enter map name ex : map1.ber, map2.ber", game);
+	if (total > 2)
+		send_error("Too may arguments", game);
+	if (!ft_strnstr(args[1], ".ber", ft_strlen(args[1])))
+		send_error("Wrong map fomart, make sure to add .ber at the end", game);
+	return (ft_strtrim(args[1], " "));
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy.c                                            :+:      :+:    :+:   */
+/*   enemy_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 19:20:39 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 06:43:36 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/28 17:51:10 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	spawn_enemy(t_data *game, int *i, int *temp, int *already_spawned)
 {
@@ -54,12 +54,12 @@ void	handle_move_enemy(t_data *game, int i, int *go_back)
 	else if (game->map_items[i - game->width] == '0' && !*go_back)
 	{
 		*go_back = 1;
-		move_enemy_up(game, i);
+		move_enemy_up_and_down(game, i, i - game->width);
 	}
 	else if (game->map_items[i + game->width] == '0' && !*go_back)
 	{
 		*go_back = 1;
-		move_enemy_down(game, i);
+		move_enemy_up_and_down(game, i, i + game->width);
 	}
 	else
 		*go_back = 0;
