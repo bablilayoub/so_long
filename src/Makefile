@@ -1,5 +1,5 @@
 NAME = so_long
-SRC = main.c args_handler.c init_game.c parse_map.c utils.c render.c handle_keys.c valid_map.c
+SRC = main.c args_handler.c init_game.c parse_map.c parse_utils.c utils.c render.c handle_keys.c valid_map.c
 OBJ = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -28,7 +28,6 @@ $(OBJ): $(SRC) $(HEADER)
 exe: all
 	@echo "- Executing $(NAME)... \n"
 	@./$(NAME) "../maps/map2.ber"
-	@echo "\n- Done -"
 
 clean:
 	@echo "- Removing object files..."

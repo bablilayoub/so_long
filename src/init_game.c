@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:02:42 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 01:47:32 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/28 08:39:57 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	start_making(t_data *game)
 	render_image(game);
 	render_map(game);
 	mlx_hook(game->mlx_win, 17, 0, close_game, game);
-	mlx_key_hook(game->mlx_win, key_hook, game);
+	mlx_hook(game->mlx_win, 2, 0, key_hook, game);
 	mlx_loop(game->mlx);
 }
 
