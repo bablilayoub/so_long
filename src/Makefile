@@ -1,13 +1,15 @@
-NAME = so_long
-SRC = main.c args_handler.c init_game.c parse_map.c parse_utils.c utils.c render.c handle_keys.c valid_map.c
-OBJ = $(SRC:.c=.o)
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-LINKS = -lmlx -framework OpenGL -framework AppKit
-LIBS = ../libs/ft_printf/libftprintf.a ../libs/libft/libft.a ../libs/get_next_line/get_next_line.c ../libs/get_next_line/get_next_line_utils.c
-HEADER= so_long.h
+NAME	=	so_long
+SRC		=	main.c args_handler.c init_game.c parse_map.c \
+			parse_utils.c utils.c render.c handle_keys.c valid_map.c
+OBJ		=	$(SRC:.c=.o)
+CC		=	cc
+CFLAGS	=	-Wall -Wextra -Werror
+LINKS	=	-lmlx -framework OpenGL -framework AppKit
+LIBS	=	../libs/ft_printf/libftprintf.a ../libs/libft/libft.a \
+			../libs/get_next_line/get_next_line.c \../libs/get_next_line/get_next_line_utils.c
+HEADER	=	so_long.h
 
-all: comp_start $(NAME)
+all: $(NAME)
 
 comp_start:
 	@echo "Preparing libraries ..."
@@ -18,12 +20,10 @@ $(NAME): comp_start $(OBJ)
 	@echo "Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJ) $(LINKS) $(LIBS) -o $(NAME)
 	@echo "- Compiled -"
-	@rm $(OBJ)
-	@echo "Deleted object files"
 
-$(OBJ): $(SRC) $(HEADER)
-	@echo "- Making object files..."
-	@$(CC) $(CFLAGS) -c $(SRC)
+%.o: %.c $(HEADER)
+	@echo "- Making object file..."
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 exe: all
 	@echo "- Executing $(NAME)... \n"
@@ -42,3 +42,5 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: comp_start clean

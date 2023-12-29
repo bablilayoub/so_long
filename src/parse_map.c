@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/28 12:08:14 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/29 08:34:57 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ char	*get_items(int fd, t_data *game)
 		free(temp);
 		temp = get_next_line(fd);
 	}
-	if (temp)
-		free(temp);
 	return (result);
 }
 

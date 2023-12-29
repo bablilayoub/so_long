@@ -1,17 +1,17 @@
-NAME = so_long
-SRC =	main_bonus.c args_handler_bonus.c init_game_bonus.c parse_map_bonus.c \
-		parse_utils_bonus.c utils_bonus.c render_bonus.c handle_keys_bonus.c \
-		handle_keys_utils_bonus.c valid_map_bonus.c enemy_bonus.c enemy_utils_bonus.c \
-		teleport_bonus.c teleport_utils_bonus.c
-LIBS =	../libs/ft_printf/libftprintf.a ../libs/libft/libft.a \
-		../libs/get_next_line/get_next_line.c ../libs/get_next_line/get_next_line_utils.c
-OBJ = $(SRC:.c=.o)
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-LINKS = -lmlx -framework OpenGL -framework AppKit
-HEADER= so_long_bonus.h
+NAME	=	so_long
+SRC		=	main_bonus.c args_handler_bonus.c init_game_bonus.c parse_map_bonus.c \
+			parse_utils_bonus.c utils_bonus.c render_bonus.c handle_keys_bonus.c \
+			handle_keys_utils_bonus.c valid_map_bonus.c enemy_bonus.c enemy_utils_bonus.c \
+			teleport_bonus.c teleport_utils_bonus.c
+LIBS	=	../libs/ft_printf/libftprintf.a ../libs/libft/libft.a \
+			../libs/get_next_line/get_next_line.c ../libs/get_next_line/get_next_line_utils.c
+OBJ		=	$(SRC:.c=.o)
+CC		=	cc
+CFLAGS	=	-Wall -Wextra -Werror
+LINKS	=	-lmlx -framework OpenGL -framework AppKit
+HEADER	=	so_long_bonus.h
 
-all: comp_start $(NAME)
+all: $(NAME)
 
 comp_start:
 	@echo "Preparing libraries ..."
@@ -22,16 +22,14 @@ $(NAME): comp_start $(OBJ)
 	@echo "Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJ) $(LINKS) $(LIBS) -o $(NAME)
 	@echo "- Compiled -"
-	@rm $(OBJ)
-	@echo "Deleted object files"
 
-$(OBJ): $(SRC) $(HEADER)
-	@echo "- Making object files..."
-	@$(CC) $(CFLAGS) -c $(SRC)
+%.o: %.c $(HEADER)
+	@echo "- Making object file..."
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 exe: all
 	@echo "- Executing $(NAME)... \n"
-	@./$(NAME) "../maps/map3.ber"
+	@./$(NAME) "../maps/map6.ber"
 
 clean:
 	@echo "- Removing object files..."
@@ -46,3 +44,5 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: comp_start clean
