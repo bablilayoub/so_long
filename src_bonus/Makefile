@@ -11,14 +11,14 @@ CFLAGS	=	-Wall -Wextra -Werror
 LINKS	=	-lmlx -framework OpenGL -framework AppKit
 HEADER	=	so_long_bonus.h
 
-all: $(NAME)
+all: comp_start $(NAME)
 
 comp_start:
 	@echo "Preparing libraries ..."
 	@cd ../libs/libft && make
 	@cd ../libs/ft_printf && make
 
-$(NAME): comp_start $(OBJ)
+$(NAME): $(OBJ)
 	@echo "Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJ) $(LINKS) $(LIBS) -o $(NAME)
 	@echo "- Compiled -"

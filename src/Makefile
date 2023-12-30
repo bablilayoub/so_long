@@ -9,14 +9,14 @@ LIBS	=	../libs/ft_printf/libftprintf.a ../libs/libft/libft.a \
 			../libs/get_next_line/get_next_line.c \../libs/get_next_line/get_next_line_utils.c
 HEADER	=	so_long.h
 
-all: $(NAME)
+all: comp_start $(NAME)
 
 comp_start:
 	@echo "Preparing libraries ..."
 	@cd ../libs/libft && make
 	@cd ../libs/ft_printf && make
 
-$(NAME): comp_start $(OBJ)
+$(NAME): $(OBJ)
 	@echo "Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJ) $(LINKS) $(LIBS) -o $(NAME)
 	@echo "- Compiled -"

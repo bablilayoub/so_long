@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 06:47:57 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/28 19:40:33 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/30 09:30:56 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,13 @@ void	init_teleport(t_data *game)
 void	spawn_portals(t_data *game)
 {
 	int	i;
-	int	temp;
 
 	i = 0;
 	while (game->map_items[i] && game->map_items[i] != 'P')
 		i++;
-	spawn_portal_enter(game, &i, &temp);
+	spawn_portal_enter(game, &i);
 	i = 0;
-	temp = 0;
-	spawn_portal_exit(game, &i, &temp);
+	spawn_portal_exit(game, &i);
 }
 
 void	destroy_portals(t_data *game)
@@ -61,16 +59,15 @@ void	destroy_portals(t_data *game)
 
 int	teleport_player(t_data *game, int i, int temp, int p)
 {
-	while (game->map_items[i] != 'M')
+	while (game->map_items[i] && game->map_items[i] != 'M')
 		i++;
-	temp = i;
-	while (game->map_items[i] != '0')
+	while (game->map_items[i] && game->map_items[i] != '0')
 		i++;
-	if (temp == i)
+	if (i == game->width * game->height)
 	{
-		while (game->map_items[i] != '0')
+		i--;
+		while (game->map_items[i] && game->map_items[i] != '0')
 			i--;
-		temp = i;
 	}
 	game->map_items[p] = '0';
 	game->map_items[i] = 'P';

@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 02:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/29 09:04:14 by abablil          ###   ########.fr       */
+/*   Updated: 2023/12/30 09:21:55 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void	init_teleport(t_data *game);
 void	spawn_portals(t_data *game);
 int		check_for_portals(t_data *game, char position);
 void	destroy_portals(t_data *game);
-void	spawn_portal_enter(t_data *game, int *i, int *temp);
-void	spawn_portal_exit(t_data *game, int *i, int *temp);
+void	spawn_portal_enter(t_data *game, int *i);
+void	spawn_portal_exit(t_data *game, int *i);
 
 #endif
