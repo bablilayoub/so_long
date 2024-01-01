@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 06:47:57 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/30 09:30:56 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/01 16:10:15 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_teleport(t_data *game)
 	{
 		free(game->mlx_win);
 		free(game->mlx);
-		send_error("Missing textures!\n", game);
+		send_error("Textures are missing!\n", game);
 	}
 }
 

@@ -25,7 +25,7 @@ $(NAME): $(OBJ)
 
 %.o: %.c $(HEADER)
 	@echo "- Making object file..."
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 exe: all
 	@echo "- Executing $(NAME)... \n"

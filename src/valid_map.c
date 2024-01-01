@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 20:27:35 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 01:54:24 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/01 15:16:54 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ void	check_walls(t_data *game)
 		while (i == 0 && map[i][j] && map[i][j] == '1')
 			j++;
 		if (i == 0 && j != game->width)
-			send_error("First line of the map must contain only walls", game);
+			send_error("The first line of the map must contain only walls.",
+				game);
 		if (map[i][0] != '1' || map[i][game->width - 1] != '1')
-			send_error("Map lines must start and end with a wall", game);
+			send_error("Map lines must start and end with a wall.", game);
 		i++;
 	}
 	i--;
@@ -65,7 +66,7 @@ void	check_walls(t_data *game)
 	while (map[i][j] && map[i][j] == '1')
 		j++;
 	if (j != game->width)
-		send_error("Last line of the map must contain only walls", game);
+		send_error("The last line of the map must contain only walls.", game);
 	free_2d(map);
 }
 
@@ -79,7 +80,7 @@ void	remove_new_lines(t_data *game)
 	j = 0;
 	new_map = (char *)malloc(sizeof(char) * ft_strlen(game->map_items));
 	if (!new_map)
-		send_error("Faild to allocate new map", game);
+		send_error("Failed to allocate a new map", game);
 	while (game->map_items[i])
 	{
 		if (game->map_items[i] && game->map_items[i] != '\n')
@@ -113,7 +114,7 @@ void	check_map_size(t_data *game)
 		if (prev == 0)
 			prev = current;
 		if (prev != current)
-			send_error("Map size is invalid", game);
+			send_error("Invalid map size", game);
 		if (game->map_items[i] && game->map_items[i] == '\n')
 			i++;
 	}

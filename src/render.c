@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:35:28 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 02:05:50 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/01 15:17:49 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	render_image(t_data *game)
 	{
 		free(game->mlx_win);
 		free(game->mlx);
-		send_error("Missing textures!\n", game);
+		send_error("Textures are missing!\n", game);
 	}
 }
 
@@ -76,7 +76,7 @@ void	render_map(t_data *game)
 				mlx_put_image_to_window(game->mlx,
 					game->mlx_win, element, x * ITEM_SIZE, y * ITEM_SIZE);
 			else
-				send_error("Faild to get element", game);
+				send_error("Failed to get element", game);
 			i++;
 			x++;
 		}
