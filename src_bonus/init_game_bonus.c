@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:02:42 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/01 16:06:24 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 09:10:19 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void	init_game(char *map_name, t_data *game)
 	if (fd == -1)
 		send_error("No such file or directory!\n", game);
 	parse_map(fd, game);
+	close(fd);
 	start_making(game);
 }
