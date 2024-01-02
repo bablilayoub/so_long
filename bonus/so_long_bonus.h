@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 02:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/30 09:21:55 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 18:21:07 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 typedef struct s_data
 {
 	char	*map_items;
+	char	**map;
+	char	*temp;
 	void	*wall;
 	void	*exit;
 	void	*exit_closed;
@@ -79,6 +81,8 @@ char	*args_handler(int total, char **args, t_data *game);
 void	init_values(t_data *game);
 void	send_error(char *str, t_data *game);
 int		close_game(t_data *game);
+
+// Render string
 void	render_moves_and_collected(t_data *game);
 
 // Init game
@@ -87,6 +91,7 @@ void	init_game(char *map_name, t_data *game);
 // Parse map
 void	parse_map(int fd, t_data *game);
 void	check_if_found_exit(t_data *game, int found_exit, char *map);
+void	free_2d(char **str);
 
 // Render
 void	render_image(t_data *game);

@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 20:27:35 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/01 15:16:54 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 17:04:35 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	free_2d(char **str)
 		free(str[i]);
 		i++;
 	}
-	free(str);
+	if (str)
+		free(str);
 }
 
 int	valid_item(char c)
@@ -43,31 +44,31 @@ int	valid_item(char c)
 
 void	check_walls(t_data *game)
 {
-	char	**map;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	map = ft_split(game->map_items, '\n');
-	while (map[i])
+	game->map = ft_split(game->map_items, '\n');
+	if (!game->map)
+		send_error("Failed to allocate new map (Split).", game);
+	while (game->map[i])
 	{
-		while (i == 0 && map[i][j] && map[i][j] == '1')
+		while (i == 0 && game->map[i][j] && game->map[i][j] == '1')
 			j++;
 		if (i == 0 && j != game->width)
 			send_error("The first line of the map must contain only walls.",
 				game);
-		if (map[i][0] != '1' || map[i][game->width - 1] != '1')
+		if (game->map[i][0] != '1' || game->map[i][game->width - 1] != '1')
 			send_error("Map lines must start and end with a wall.", game);
 		i++;
 	}
 	i--;
 	j = 0;
-	while (map[i][j] && map[i][j] == '1')
+	while (game->map[i][j] && game->map[i][j] == '1')
 		j++;
 	if (j != game->width)
 		send_error("The last line of the map must contain only walls.", game);
-	free_2d(map);
 }
 
 void	remove_new_lines(t_data *game)

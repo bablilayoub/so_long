@@ -1,40 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   parse_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/01 15:51:32 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 18:12:50 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 char	*get_items(int fd, t_data *game)
 {
-	char	*temp;
 	char	*result;
 
-	result = ft_strdup("");
-	if (!result)
-		send_error("Failed to allocate result.", game);
-	temp = get_next_line(fd);
-	while (temp)
+	result = NULL;
+	game->temp = get_next_line(fd);
+	if (!game->temp)
+		send_error("Failed to allocate temp.", game);
+	while (game->temp)
 	{
 		game->height++;
-		if (temp[0] != '\n')
-			result = ft_strjoin(result, temp);
+		if (game->temp[0] != '\n')
+		{
+			result = ft_strjoin(result, game->temp);
+			if (!result)
+				send_error("Failed to allocate result.", game);
+		}
 		else
 		{
-			free(temp);
 			free(result);
 			send_error("Invalid Map! Lines should not start with a new line",
 				game);
 		}
-		free(temp);
-		temp = get_next_line(fd);
+		free(game->temp);
+		game->temp = get_next_line(fd);
 	}
 	return (result);
 }
@@ -106,6 +108,9 @@ void	check_map(t_data *game)
 		i++;
 	}
 	check_map_size(game);
+	if (game->width > 53 || game->height > 28)
+		send_error("The map is too big to fit on this screen (Mac display)",
+			game);
 	check_walls(game);
 	remove_new_lines(game);
 	is_valid_map(game);
@@ -117,6 +122,8 @@ void	parse_map(int fd, t_data *game)
 
 	i = 0;
 	game->map_items = get_items(fd, game);
+	if (!game->map_items)
+		send_error("Failed to allocate map items", game);
 	while (game->map_items[i])
 	{
 		if (game->map_items[i] == 'C')

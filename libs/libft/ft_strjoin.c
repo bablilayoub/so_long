@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:38:33 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/27 00:59:31 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 17:02:01 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ char	*ft_strjoin(char *str1, char *str2)
 	int		total_length;
 	char	*result;
 
-	if (str1 == NULL || str2 == NULL)
+	if (!str1)
+		str1 = ft_strdup("");
+	if (!str1)
+		return (NULL);
+	if (!str2)
 		return (NULL);
 	total_length = ft_strlen(str1) + ft_strlen(str2) + 1;
 	result = (char *)malloc(sizeof(char) * total_length);

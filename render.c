@@ -6,29 +6,29 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:35:28 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/02 08:29:18 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 17:10:31 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	render_image(t_data *game)
+void	init_xpm(t_data *game)
 {
 	int	h_w;
 
 	h_w = ITEM_SIZE;
 	game->wall = mlx_xpm_file_to_image(game->mlx,
-			"../assets/wall.xpm", &h_w, &h_w);
+			"./textures/wall.xpm", &h_w, &h_w);
 	game->exit = mlx_xpm_file_to_image(game->mlx,
-			"../assets/exit.xpm", &h_w, &h_w);
+			"./textures/exit.xpm", &h_w, &h_w);
 	game->exit_closed = mlx_xpm_file_to_image(game->mlx,
-			"../assets/exit_closed.xpm", &h_w, &h_w);
+			"./textures/exit_closed.xpm", &h_w, &h_w);
 	game->item = mlx_xpm_file_to_image(game->mlx,
-			"../assets/item.xpm", &h_w, &h_w);
+			"./textures/item.xpm", &h_w, &h_w);
 	game->player = mlx_xpm_file_to_image(game->mlx,
-			"../assets/player.xpm", &h_w, &h_w);
+			"./textures/player.xpm", &h_w, &h_w);
 	game->space = mlx_xpm_file_to_image(game->mlx,
-			"../assets/space.xpm", &h_w, &h_w);
+			"./textures/space.xpm", &h_w, &h_w);
 	if (!game->wall || !game->exit || !game->item
 		|| !game->player || !game->space || !game->exit_closed)
 		send_error("Textures are missing!\n", game);

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_handler_bonus.c                               :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 21:08:53 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/30 12:28:43 by abablil          ###   ########.fr       */
+/*   Created: 2023/12/23 15:50:03 by abablil           #+#    #+#             */
+/*   Updated: 2024/01/02 17:25:31 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "so_long.h"
 
-char	*args_handler(int total, char **args, t_data *game)
+int	main(int total, char **args)
 {
-	if (total < 2)
-		send_error("Please enter the map name, e.g., map1.ber or map2.ber.",
-			game);
-	if (total > 2)
-		send_error("Too many arguments.", game);
-	if (!ft_strnstr(args[1], ".ber", ft_strlen(args[1])))
-		send_error("Wrong map format, make sure to add .ber at the end.", game);
-	return (ft_strtrim(args[1], " "));
+	t_data	game;
+	char	*map_name;
+
+	init_values(&game);
+	map_name = args_handler(total, args, &game);
+	if (!map_name)
+		send_error("Failed to allocate map name", &game);
+	init_game(map_name, &game);
 }

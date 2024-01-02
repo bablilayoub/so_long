@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 01:51:54 by abablil           #+#    #+#             */
-/*   Updated: 2023/12/28 12:08:11 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 17:10:36 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "../libs/ft_printf/ft_printf.h"
-# include "../libs/libft/libft.h"
-# include "../libs/get_next_line/get_next_line.h"
+# include "./libs/ft_printf/ft_printf.h"
+# include "./libs/libft/libft.h"
+# include "./libs/get_next_line/get_next_line.h"
 
 // Game name
 # define GAME_NAME "Run Boy"
@@ -31,6 +31,8 @@
 typedef struct s_data
 {
 	char	*map_items;
+	char	**map;
+	char	*temp;
 	void	*wall;
 	void	*exit;
 	void	*exit_closed;
@@ -68,7 +70,7 @@ void	parse_map(int fd, t_data *game);
 void	check_if_found_exit(t_data *game, int found_exit, char *map);
 
 // Render
-void	render_image(t_data *game);
+void	init_xpm(t_data *game);
 void	render_map(t_data *map);
 
 // Valid map
