@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:35:28 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/01 15:17:49 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 08:29:18 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ void	render_image(t_data *game)
 			"../assets/space.xpm", &h_w, &h_w);
 	if (!game->wall || !game->exit || !game->item
 		|| !game->player || !game->space || !game->exit_closed)
-	{
-		free(game->mlx_win);
-		free(game->mlx);
 		send_error("Textures are missing!\n", game);
-	}
 }
 
 char	*get_element(int *i, t_data *game)

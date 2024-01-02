@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:35:28 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/01 16:10:09 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 08:44:33 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,7 @@ void	render_image(t_data *game)
 		|| !game->enemy_right_5 || !game->enemy_right_6 || !game->enemy_right_7
 		|| !game->enemy_left_2 || !game->enemy_left_3 || !game->enemy_left_4
 		|| !game->enemy_left_5 || !game->enemy_left_6 || !game->enemy_left_7)
-	{
-		free(game->mlx_win);
-		free(game->mlx);
 		send_error("Textures are missing!\n", game);
-	}
 }
 
 char	*get_element(int *i, t_data *game)

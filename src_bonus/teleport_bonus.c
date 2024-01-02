@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 06:47:57 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/01 16:10:15 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 08:44:04 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ void	init_teleport(t_data *game)
 	game->door_exit = mlx_xpm_file_to_image(game->mlx,
 			"../assets/door_exit.xpm", &h_w, &h_w);
 	if (!game->door_enter || !game->door_exit)
-	{
-		free(game->mlx_win);
-		free(game->mlx);
 		send_error("Textures are missing!\n", game);
-	}
 }
 
 void	spawn_portals(t_data *game)
