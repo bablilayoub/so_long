@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 22:39:07 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/02 18:22:17 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 19:13:46 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,19 @@ void	game_over(t_data *game, int i)
 void	render_enemy_left(t_data *game, int h_w)
 {
 	game->enemy_left_1 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_left_1.xpm", &h_w, &h_w);
+			"./textures/enemy_left_1.xpm", &h_w, &h_w);
 	game->enemy_left_2 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_left_2.xpm", &h_w, &h_w);
+			"./textures/enemy_left_2.xpm", &h_w, &h_w);
 	game->enemy_left_3 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_left_3.xpm", &h_w, &h_w);
+			"./textures/enemy_left_3.xpm", &h_w, &h_w);
 	game->enemy_left_4 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_left_4.xpm", &h_w, &h_w);
+			"./textures/enemy_left_4.xpm", &h_w, &h_w);
 	game->enemy_left_4 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_left_4.xpm", &h_w, &h_w);
+			"./textures/enemy_left_4.xpm", &h_w, &h_w);
 	game->enemy_left_5 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_left_5.xpm", &h_w, &h_w);
+			"./textures/enemy_left_5.xpm", &h_w, &h_w);
 	game->enemy_left_6 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_left_6.xpm", &h_w, &h_w);
+			"./textures/enemy_left_6.xpm", &h_w, &h_w);
 	game->enemy_left_7 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_left_7.xpm", &h_w, &h_w);
+			"./textures/enemy_left_7.xpm", &h_w, &h_w);
 }

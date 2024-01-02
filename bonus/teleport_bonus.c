@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 06:47:57 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/02 14:47:32 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 19:14:11 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	init_teleport(t_data *game)
 
 	h_w = ITEM_SIZE;
 	game->door_enter = mlx_xpm_file_to_image(game->mlx,
-			"../textures/door_enter.xpm", &h_w, &h_w);
+			"./textures/door_enter.xpm", &h_w, &h_w);
 	game->door_exit = mlx_xpm_file_to_image(game->mlx,
-			"../textures/door_exit.xpm", &h_w, &h_w);
+			"./textures/door_exit.xpm", &h_w, &h_w);
 	if (!game->door_enter || !game->door_exit)
 		send_error("Textures are missing!\n", game);
 }

@@ -10,7 +10,7 @@ SRC_BONUS		=	./bonus/main_bonus.c ./bonus/args_handler_bonus.c ./bonus/init_game
 					./bonus/teleport_bonus.c ./bonus/teleport_utils_bonus.c ./bonus/render_string_bonus.c
 			
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror -fsanitize=address
 LINKS			=	-lmlx -framework OpenGL -framework AppKit
 LIBS			=	./libs/ft_printf/libftprintf.a ./libs/libft/libft.a \
 					./libs/get_next_line/get_next_line.c ./libs/get_next_line/get_next_line_utils.c
@@ -25,8 +25,9 @@ all: comp_start $(NAME)
 
 comp_start:
 	@echo "Preparing libraries ..."
-	@make -C ./libs/libft
-	@make -C ./libs/ft_printf
+	@cd ./libs/libft && make
+	@cd ./libs/ft_printf && make
+
 
 $(NAME): $(OBJ)
 	@echo "Compiling $(NAME)..."
@@ -38,7 +39,7 @@ bonus: comp_start $(OBJ_BONUS)
 	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LINKS) $(LIBS) -o $(NAME_BONUS)
 	@echo "- Compiled -"
 
-%_bonus.o: %_bonus.c $(HEADER_BONUS)
+%_bonus.o:  %_bonus.c $(HEADER_BONUS)
 	@echo "- Making bonus object file..."
 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 

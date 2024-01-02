@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:17:47 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/02 18:19:24 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 19:24:43 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ void	render_moves(t_data *game)
 {
 	char	*value;
 	char	*text;
+	char	*temp;
 
+	temp = ft_strdup("Moves : ");
 	value = ft_itoa(game->steps);
-	text = ft_strjoin("Moves : ", value);
-	if (!value || !text)
+	text = ft_strjoin(temp, value);
+	if (!temp || !value || !text)
 	{
 		free(value);
 		free(text);
@@ -35,10 +37,12 @@ void	render_collected(t_data *game)
 {
 	char	*value;
 	char	*text;
+	char	*temp;
 
+	temp = ft_strdup("Collected : ");
 	value = ft_itoa(game->collected);
-	text = ft_strjoin("Collected : ", value);
-	if (!value || !text)
+	text = ft_strjoin(temp, value);
+	if (!temp || !value || !text)
 	{
 		free(value);
 		free(text);

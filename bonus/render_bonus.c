@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:35:28 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/02 14:47:23 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 19:14:35 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,45 @@
 void	init_xpm(t_data *game, int *h_w)
 {
 	game->wall = mlx_xpm_file_to_image(game->mlx,
-			"../textures/wall.xpm", h_w, h_w);
+			"./textures/wall.xpm", h_w, h_w);
 	game->exit = mlx_xpm_file_to_image(game->mlx,
-			"../textures/exit.xpm", h_w, h_w);
+			"./textures/exit.xpm", h_w, h_w);
 	game->exit_closed = mlx_xpm_file_to_image(game->mlx,
-			"../textures/exit_closed.xpm", h_w, h_w);
+			"./textures/exit_closed.xpm", h_w, h_w);
 	game->item = mlx_xpm_file_to_image(game->mlx,
-			"../textures/item.xpm", h_w, h_w);
+			"./textures/item.xpm", h_w, h_w);
 	game->player = mlx_xpm_file_to_image(game->mlx,
-			"../textures/player.xpm", h_w, h_w);
+			"./textures/player.xpm", h_w, h_w);
 	game->player_left = mlx_xpm_file_to_image(game->mlx,
-			"../textures/player_left.xpm", h_w, h_w);
+			"./textures/player_left.xpm", h_w, h_w);
 	game->player_right = mlx_xpm_file_to_image(game->mlx,
-			"../textures/player_right.xpm", h_w, h_w);
+			"./textures/player_right.xpm", h_w, h_w);
 	game->player_top = mlx_xpm_file_to_image(game->mlx,
-			"../textures/player_top.xpm", h_w, h_w);
+			"./textures/player_top.xpm", h_w, h_w);
 	game->space = mlx_xpm_file_to_image(game->mlx,
-			"../textures/space.xpm", h_w, h_w);
+			"./textures/space.xpm", h_w, h_w);
 }
 
 void	render_enemy(t_data *game, int h_w)
 {
 	game->enemy = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy.xpm", &h_w, &h_w);
+			"./textures/enemy.xpm", &h_w, &h_w);
 	game->enemy_right_1 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_right_1.xpm", &h_w, &h_w);
+			"./textures/enemy_right_1.xpm", &h_w, &h_w);
 	game->enemy_right_2 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_right_2.xpm", &h_w, &h_w);
+			"./textures/enemy_right_2.xpm", &h_w, &h_w);
 	game->enemy_right_3 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_right_3.xpm", &h_w, &h_w);
+			"./textures/enemy_right_3.xpm", &h_w, &h_w);
 	game->enemy_right_4 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_right_4.xpm", &h_w, &h_w);
+			"./textures/enemy_right_4.xpm", &h_w, &h_w);
 	game->enemy_right_4 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_right_4.xpm", &h_w, &h_w);
+			"./textures/enemy_right_4.xpm", &h_w, &h_w);
 	game->enemy_right_5 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_right_5.xpm", &h_w, &h_w);
+			"./textures/enemy_right_5.xpm", &h_w, &h_w);
 	game->enemy_right_6 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_right_6.xpm", &h_w, &h_w);
+			"./textures/enemy_right_6.xpm", &h_w, &h_w);
 	game->enemy_right_7 = mlx_xpm_file_to_image(game->mlx,
-			"../textures/enemy_right_7.xpm", &h_w, &h_w);
+			"./textures/enemy_right_7.xpm", &h_w, &h_w);
 }
 
 void	render_image(t_data *game)
