@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:45:10 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/02 08:42:58 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/02 08:59:27 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,17 @@ int	close_game(t_data *game)
 	exit(EXIT_SUCCESS);
 }
 
-void	init_values(t_data *game)
+void	init_more_value(t_data *game)
 {
-	game->map_items = NULL;
-	game->wall = NULL;
-	game->exit = NULL;
-	game->exit_closed = NULL;
-	game->item = NULL;
-	game->player = NULL;
-	game->player_left = NULL;
-	game->player_right = NULL;
-	game->player_top = NULL;
-	game->enemy = NULL;
-	game->space = NULL;
+	game->enemy_right_1 = NULL;
+	game->enemy_right_2 = NULL;
+	game->enemy_right_3 = NULL;
+	game->enemy_right_4 = NULL;
+	game->enemy_right_5 = NULL;
+	game->enemy_right_6 = NULL;
+	game->enemy_right_7 = NULL;
+	game->door_exit = NULL;
+	game->door_enter = NULL;
 	game->mlx = NULL;
 	game->mlx_win = NULL;
 	game->width = 0;
@@ -55,6 +53,29 @@ void	init_values(t_data *game)
 	game->steps = 0;
 	game->collected = 0;
 	game->collectables = 0;
+}
+
+void	init_values(t_data *game)
+{
+	game->map_items = NULL;
+	game->wall = NULL;
+	game->exit = NULL;
+	game->exit_closed = NULL;
+	game->item = NULL;
+	game->space = NULL;
+	game->player = NULL;
+	game->player_left = NULL;
+	game->player_right = NULL;
+	game->player_top = NULL;
+	game->enemy = NULL;
+	game->enemy_left_1 = NULL;
+	game->enemy_left_2 = NULL;
+	game->enemy_left_3 = NULL;
+	game->enemy_left_4 = NULL;
+	game->enemy_left_5 = NULL;
+	game->enemy_left_6 = NULL;
+	game->enemy_left_7 = NULL;
+	init_more_value(game);
 }
 
 void	render_moves_and_collected(t_data *game)
