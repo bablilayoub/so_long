@@ -10,7 +10,7 @@ SRC_BONUS		=	./bonus/main_bonus.c ./bonus/args_handler_bonus.c ./bonus/init_game
 					./bonus/teleport_bonus.c ./bonus/teleport_utils_bonus.c ./bonus/render_string_bonus.c
 			
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror
 LINKS			=	-lmlx -framework OpenGL -framework AppKit
 LIBS			=	./libs/ft_printf/libftprintf.a ./libs/libft/libft.a \
 					./libs/get_next_line/get_next_line.c ./libs/get_next_line/get_next_line_utils.c
