@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/02 17:51:05 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/03 11:23:35 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*get_items(int fd, t_data *game)
 	result = NULL;
 	game->temp = get_next_line(fd);
 	if (!game->temp)
-		send_error("Failed to allocate temp.", game);
+		send_error("Map can't be empty", game);
 	while (game->temp)
 	{
 		game->height++;

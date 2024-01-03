@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:35:28 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/02 19:14:35 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/03 11:35:02 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	render_enemy(t_data *game, int h_w)
 			"./textures/enemy_right_7.xpm", &h_w, &h_w);
 }
 
-void	render_image(t_data *game)
+void	prepare_xpms(t_data *game)
 {
 	int	h_w;
 

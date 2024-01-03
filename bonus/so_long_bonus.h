@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 02:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/03 10:14:10 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/03 11:35:07 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	check_if_found_exit(t_data *game, int found_exit, char *map);
 void	free_2d(char **str);
 
 // Render
-void	render_image(t_data *game);
+void	prepare_xpms(t_data *game);
 void	render_map(t_data *map);
 
 // Valid map

@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 16:02:42 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/03 10:25:28 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/03 11:34:58 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	start_making(t_data *game)
 			ITEM_SIZE * game->width, ITEM_SIZE * game->height + 50, GAME_NAME);
 	if (!game->mlx_win)
 		send_error("Failed to create new mlx window", game);
-	render_image(game);
+	prepare_xpms(game);
 	render_map(game);
 	mlx_hook(game->mlx_win, 17, 0, close_game, game);
 	mlx_hook(game->mlx_win, 2, 0, key_hook, game);
