@@ -34,7 +34,9 @@ $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LINKS) $(LIBS) -o $(NAME)
 	@echo "- Compiled -"
 
-bonus: comp_start $(OBJ_BONUS)
+bonus: $(OBJ_BONUS)
+	@cd ./libs/libft && make
+	@cd ./libs/ft_printf && make
 	@echo "Compiling $(NAME_BONUS)..."
 	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LINKS) $(LIBS) -o $(NAME_BONUS)
 	@echo "- Compiled -"
