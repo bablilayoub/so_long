@@ -28,15 +28,14 @@ comp_start:
 	@cd ./libs/libft && make
 	@cd ./libs/ft_printf && make
 
-
 $(NAME): $(OBJ)
 	@echo "Compiling $(NAME)..."
 	@$(CC) $(CFLAGS) $(OBJ) $(LINKS) $(LIBS) -o $(NAME)
 	@echo "- Compiled -"
 
-bonus: $(OBJ_BONUS)
-	@cd ./libs/libft && make
-	@cd ./libs/ft_printf && make
+bonus: comp_start $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJ_BONUS)
 	@echo "Compiling $(NAME_BONUS)..."
 	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LINKS) $(LIBS) -o $(NAME_BONUS)
 	@echo "- Compiled -"
