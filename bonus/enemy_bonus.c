@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 19:20:39 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/03 10:25:31 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/03 11:18:29 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ int	handle_enemy(t_data *game)
 		count = TIMEOUT;
 	i = 0;
 	temp = 0;
-	handle_spawn_enemy(game, &i, &temp, &already_spawned);
+	if (!already_spawned)
+		handle_spawn_enemy(game, &i, &temp, &already_spawned);
 	if (already_spawned)
 	{
 		while (game->map_items[i] != 'X')
