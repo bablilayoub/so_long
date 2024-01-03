@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 02:06:01 by abablil           #+#    #+#             */
-/*   Updated: 2024/01/03 11:35:07 by abablil          ###   ########.fr       */
+/*   Updated: 2024/01/03 11:57:37 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "../libs/get_next_line/get_next_line.h"
 
 // Game name
-# define GAME_NAME "Run Boy"
+# define GAME_NAME "Kiwi Frog"
 
 // Items size (pixels)
 # define ITEM_SIZE 48
